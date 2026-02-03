@@ -112,9 +112,9 @@ with col2:
     
     st.subheader("🚀 Quick Start")
     st.markdown("""
-    1. Make sure FastAPI server is running:
+    1. for magarsa repe🐍 :
        ```bash
-       uvicorn main:app --reload
+       we will run ezu also 🤴
        ```
     
     2. Upload some documents
