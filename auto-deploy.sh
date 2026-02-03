@@ -59,6 +59,18 @@ FRONTEND_RESPONSE=$(curl -s -X POST "https://api.render.com/v1/services" \
       {
         "key": "BACKEND_URL",
         "value": "https://rag-backend.onrender.com"
+      },
+      {
+        "key": "STREAMLIT_SERVER_HEADLESS",
+        "value": "true"
+      },
+      {
+        "key": "STREAMLIT_SERVER_ADDRESS",
+        "value": "0.0.0.0"
+      },
+      {
+        "key": "STREAMLIT_SERVER_PORT",
+        "value": "8501"
       }
     ],
     "plan": "free"

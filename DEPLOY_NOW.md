@@ -24,6 +24,9 @@ Then configure:
 - **Environment Variables**:
   - `PORT`: `8501`
   - `BACKEND_URL`: `https://rag-backend.onrender.com`
+  - `STREAMLIT_SERVER_HEADLESS`: `true`
+  - `STREAMLIT_SERVER_ADDRESS`: `0.0.0.0`
+  - `STREAMLIT_SERVER_PORT`: `8501`
 
 ## 🎯 After Deployment
 
