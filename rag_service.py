@@ -4,7 +4,7 @@ from database import embeddings, collection
 import os
 from dotenv import load_dotenv
 from pathlib import Path
-from langchain_community.document_loaders import TextLoader, PyPDFLoader
+from langchain_community.document_loaders import TextLoader, PyPDFLoader, Docx2txtLoader, UnstructuredExcelLoader, UnstructuredPowerPointLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 load_dotenv(Path(__file__).parent / ".env")
@@ -89,6 +89,15 @@ def safe_load_document(filepath):
     try:
         if file_extension == '.pdf':
             return PyPDFLoader(filepath).load()
+        elif file_extension in ['.docx', '.doc']:
+            return Docx2txtLoader(filepath).load()
+        elif file_extension in ['.xlsx', '.xls']:
+            return UnstructuredExcelLoader(filepath).load()
+        elif file_extension in ['.pptx', '.ppt']:
+            return UnstructuredPowerPointLoader(filepath).load()
+        elif file_extension in ['.html', '.htm']:
+            from langchain_community.document_loaders import UnstructuredHTMLLoader
+            return UnstructuredHTMLLoader(filepath).load()
         else:
             # Try UTF-8 first, then latin-1 for text files
             try:

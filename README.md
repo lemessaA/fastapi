@@ -4,7 +4,7 @@ A FastAPI-based Research Assistant with RAG (Retrieval-Augmented Generation) cap
 
 ## Features
 
-- 📄 **Document Upload**: Support for PDF, TXT, and Markdown files
+- 📄 **Document Upload**: Support for PDF, TXT, Markdown, Word, Excel, PowerPoint, and HTML files
 - 🔍 **Intelligent Search**: RAG-powered question answering
 - 🎨 **Beautiful UI**: Streamlit interface for easy interaction
 - 📚 **Source Citations**: Answers include source references with relevance scores
@@ -99,6 +99,10 @@ curl -X POST "http://localhost:8000/research" \
 - **PDF** (.pdf)
 - **Text** (.txt)
 - **Markdown** (.md)
+- **Word** (.docx, .doc)
+- **Excel** (.xlsx, .xls)
+- **PowerPoint** (.pptx, .ppt)
+- **HTML** (.html, .htm)
 
 ## Architecture
 

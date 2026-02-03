@@ -22,8 +22,8 @@ with st.sidebar:
     
     uploaded_file = st.file_uploader(
         "Choose a file",
-        type=['txt', 'md', 'pdf'],
-        help="Upload text files, markdown, or PDF documents"
+        type=['txt', 'md', 'pdf', 'docx', 'doc', 'xlsx', 'xls', 'pptx', 'ppt', 'html', 'htm'],
+        help="Upload text files, markdown, PDF, Word, Excel, PowerPoint, or HTML documents"
     )
     
     if uploaded_file is not None:
@@ -97,7 +97,7 @@ with col2:
     st.markdown("""
     **1. Upload Documents:**
     - Use the file uploader on the left
-    - Supported formats: TXT, MD, PDF
+    - Supported formats: TXT, MD, PDF, DOCX, DOC, XLSX, XLS, PPTX, PPT, HTML
     - Documents are automatically processed
     
     **2. Ask Questions:**
