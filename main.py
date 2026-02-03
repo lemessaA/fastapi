@@ -9,6 +9,7 @@ app = FastAPI(title="Research Assistant API")
 
 class ResearchRequest(BaseModel):
     question: str
+    mode: str = "research"  # Default to research mode
 
 class Source(BaseModel):
     title: str
@@ -27,7 +28,7 @@ class UploadResponse(BaseModel):
 @app.post("/research", response_model=ResearchResponse)
 async def ask_research_question(request: ResearchRequest):
     try:
-        answer, sources = answer_research_question(request.question)
+        answer, sources = answer_research_question(request.question, request.mode)
         formatted = [
             Source(
                 title=s["title"],

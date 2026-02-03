@@ -23,15 +23,12 @@ def search_research_db(query: str, top_k: int = 3):
         for i, doc in enumerate(results["documents"][0])
     ]
 
-def answer_research_question(query: str):
+def answer_research_question(query: str, mode: str = "research"):
     chunks = search_research_db(query)
-    if not chunks:
-        return ("I don't have enough information to answer this question.", [])
-
-    context = "\n\n".join([f"From {c['title']}:\n{c['content']}" for c in chunks])
-    prompt = PromptTemplate(
-        input_variables=["context", "question"],
-        template="""
+    
+    # Define different prompt modes
+    prompts = {
+        "research": """
 Based on the following context document(s), answer the researcher's question:
 
 Research Context:
@@ -45,8 +42,80 @@ Only answer based on the provided context, do not make assumptions or provide ad
 If the question is not related to the context, respond with "I don't have enough information in my
 knowledge base to answer this question. Please try adding some documents first.".
 Answer clearly and concisely, without unnecessary details.
+""",
+        
+        "creative": """
+Using the following context as inspiration and source material, respond creatively to the user's request:
+
+Context Material:
+{context}
+
+User's Request: {question}
+
+Feel free to be creative, elaborate, and go beyond the strict context when helpful.
+You can make reasonable inferences and connections.
+Make your response engaging and detailed while staying grounded in the source material.
+""",
+        
+        "conversational": """
+Based on the following context, have a natural conversation with the user:
+
+Context:
+{context}
+
+User says: {question}
+
+Respond in a friendly, conversational tone.
+You can go beyond the strict context when it makes the conversation more natural.
+If the context doesn't cover what they're asking, you can say so and offer to help with what you do know.
+""",
+        
+        "analytical": """
+Analyze the following context in relation to the user's question:
+
+Context Data:
+{context}
+
+Analytical Question: {question}
+
+Provide a detailed analysis that:
+1. Directly addresses the question using the context
+2. Breaks down complex information
+3. Identifies key patterns or insights
+4. Notes any limitations or gaps in the available information
+Be thorough and systematic in your analysis.
+""",
+        
+        "tutor": """
+Act as a helpful tutor using the following study materials:
+
+Study Materials:
+{context}
+
+Student's Question: {question}
+
+As a tutor, you should:
+1. Answer the question clearly based on the materials
+2. Explain concepts step-by-step
+3. Provide examples when helpful
+4. Ask follow-up questions to check understanding
+5. Encourage the student and make learning engaging
 """
+    }
+    
+    # Select the appropriate prompt
+    selected_prompt = prompts.get(mode, prompts["research"])
+    
+    if not chunks:
+        return ("I don't have enough information to answer this question.", [])
+
+    context = "\n\n".join([f"From {c['title']}:\n{c['content']}" for c in chunks])
+    
+    prompt = PromptTemplate(
+        input_variables=["context", "question"],
+        template=selected_prompt
     ).format(context=context, question=query)
+    
     return llm.invoke(prompt).content, chunks
 
 def ingest_document(file_path: str, original_filename: str):

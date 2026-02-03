@@ -5,7 +5,7 @@ from pathlib import Path
 
 # Configure page
 st.set_page_config(
-    page_title="RAG Research Assistant",
+    page_title="magarsa Research Assistant",
     page_icon="🔍",
     layout="wide"
 )
@@ -13,7 +13,7 @@ st.set_page_config(
 # API base URL
 API_BASE = "http://localhost:8000"
 
-st.title("🔍 RAG Research Assistant")
+st.title("🔍 magarsa  Research Assistant")
 st.markdown("Upload documents and ask questions about them")
 
 # Sidebar for file upload
@@ -56,13 +56,28 @@ with col1:
         key="question_input"
     )
     
+    # Add mode selection
+    mode = st.selectbox(
+        "Choose response mode:",
+        options=["research", "creative", "conversational", "analytical", "tutor"],
+        format_func=lambda x: {
+            "research": "🔬 Research - Precise, context-based answers",
+            "creative": "🎨 Creative - Elaborate and engaging responses", 
+            "conversational": "💬 Conversational - Friendly, natural dialogue",
+            "analytical": "📊 Analytical - Detailed breakdown and insights",
+            "tutor": "👨‍🏫 Tutor - Educational, step-by-step explanations"
+        }[x],
+        index=0,
+        key="mode_select"
+    )
+    
     if st.button("🔍 Search", key="search_button"):
         if question.strip():
             with st.spinner("Searching knowledge base..."):
                 try:
                     response = requests.post(
                         f"{API_BASE}/research",
-                        json={"question": question}
+                        json={"question": question, "mode": mode}
                     )
                     
                     if response.status_code == 200:
@@ -100,21 +115,28 @@ with col2:
     - Supported formats: TXT, MD, PDF, DOCX, DOC, XLSX, XLS, PPTX, PPT, HTML
     - Documents are automatically processed
     
-    **2. Ask Questions:**
+    **2. Choose Response Mode:**
+    - **🔬 Research**: Precise, context-based answers
+    - **🎨 Creative**: Elaborate and engaging responses  
+    - **💬 Conversational**: Friendly, natural dialogue
+    - **📊 Analytical**: Detailed breakdown and insights
+    - **👨‍🏫 Tutor**: Educational, step-by-step explanations
+    
+    **3. Ask Questions:**
     - Type your question in the text box
     - Click "Search" to get answers
     - Answers include source citations
     
-    **3. View Sources:**
+    **4. View Sources:**
     - Click on source boxes to see content
     - Scores show relevance to your question
     """)
     
     st.subheader("🚀 Quick Start")
     st.markdown("""
-    1. Make sure FastAPI server is running:
+    1. TO GET magarsa rep🐍 :
        ```bash
-       uvicorn main:app --reload
+       run ezu On CLI 🤴
        ```
     
     2. Upload some documents
