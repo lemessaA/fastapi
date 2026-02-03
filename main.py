@@ -1,0 +1,78 @@
+from fastapi import FastAPI, HTTPException, UploadFile, File
+from pydantic import BaseModel
+from typing import List
+from rag_service import answer_research_question
+import os
+import uuid
+
+app = FastAPI(title="Research Assistant API")
+
+class ResearchRequest(BaseModel):
+    question: str
+
+class Source(BaseModel):
+    title: str
+    content: str
+    score: float
+
+class ResearchResponse(BaseModel):
+    answer: str
+    sources: List[Source]
+
+class UploadResponse(BaseModel):
+    message: str
+    filename: str
+    chunks_created: int
+
+@app.post("/research", response_model=ResearchResponse)
+async def ask_research_question(request: ResearchRequest):
+    try:
+        answer, sources = answer_research_question(request.question)
+        formatted = [
+            Source(
+                title=s["title"],
+                content=s["content"][:200] + "..." if len(s["content"]) > 200 else s["content"],
+                score=s["score"]
+            ) for s in sources
+        ]
+        return ResearchResponse(answer=answer, sources=formatted)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/upload", response_model=UploadResponse)
+async def upload_document(file: UploadFile = File(...)):
+    try:
+        # Create uploads directory if it doesn't exist
+        uploads_dir = "uploads"
+        os.makedirs(uploads_dir, exist_ok=True)
+        
+        # Generate unique filename
+        file_extension = os.path.splitext(file.filename)[1]
+        unique_filename = f"{uuid.uuid4()}{file_extension}"
+        file_path = os.path.join(uploads_dir, unique_filename)
+        
+        # Save uploaded file
+        with open(file_path, "wb") as buffer:
+            content = await file.read()
+            buffer.write(content)
+        
+        # Process and ingest the document
+        from rag_service import ingest_document
+        chunks_created = ingest_document(file_path, file.filename)
+        
+        return UploadResponse(
+            message=f"Document '{file.filename}' uploaded and processed successfully",
+            filename=file.filename,
+            chunks_created=chunks_created
+        )
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/")
+async def root():
+    return {"message": "Research Assistant API is running! Visit /docs for docs."}
+    
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run(app, host="0.0.0.0", port=8000)
+    
