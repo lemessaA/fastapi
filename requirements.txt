@@ -8,3 +8,5 @@ langchain_community~=0.3.24
 langchain_huggingface~=0.2.0
 chromadb~=1.0.12
 chroma-hnswlib~=0.7.6
+pypdf~=6.6.2
+streamlit~=1.53.1
