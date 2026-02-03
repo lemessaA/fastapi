@@ -11,8 +11,6 @@ services:
         value: 10000
       - key: GROQ_API_KEY
         sync: false
-      - key: PYTHON_VERSION
-        value: 3.11.0
 
   # Streamlit Frontend Service  
   - type: web
@@ -20,11 +18,9 @@ services:
     runtime: python
     plan: free
     buildCommand: "pip install -r requirements.txt"
-    startCommand: "streamlit run streamlit_app.py --server.port $PORT --server.address 0.0.0.0 --server.headless=true"
+    startCommand: "streamlit run streamlit_app.py --server.port=$PORT --server.address=0.0.0.0 --server.headless=true"
     envVars:
       - key: PORT
         value: 8501
       - key: BACKEND_URL
         value: https://rag-backend.onrender.com
-      - key: PYTHON_VERSION
-        value: 3.11.0

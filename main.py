@@ -72,6 +72,10 @@ async def upload_document(file: UploadFile = File(...)):
 @app.get("/")
 async def root():
     return {"message": "Research Assistant API is running! Visit /docs for docs."}
+
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy", "service": "rag-backend"}
     
 if __name__ == "__main__":
     import uvicorn
