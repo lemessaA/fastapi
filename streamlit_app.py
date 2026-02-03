@@ -5,13 +5,13 @@ from pathlib import Path
 
 # Configure page
 st.set_page_config(
-    page_title="magarsa Research Assistant",
+    page_title="RAG Research Assistant",
     page_icon="🔍",
     layout="wide"
 )
 
-# API base URL
-API_BASE = "http://localhost:8000"
+# API base URL - use environment variable for production
+API_BASE = os.getenv("BACKEND_URL", "http://localhost:8000")
 
 st.title("🔍 magarsa  Research Assistant")
 st.markdown("Upload documents and ask questions about them")
