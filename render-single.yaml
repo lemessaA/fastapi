@@ -1,7 +1,7 @@
 services:
   # Unified RAG Application (Frontend + Backend)
   - type: web
-    name: rag-app
+    name: rag-apps
     runtime: python3
     plan: free
     buildCommand: "uv add -r requirements.txt"
