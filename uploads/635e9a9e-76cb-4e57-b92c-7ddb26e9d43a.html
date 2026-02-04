@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" style="height: auto;"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Log in - HU-ISIMS-RIS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, user-scalable=no">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="Log%20in%20-%20HU-ISIMS-RIS_files/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="Log%20in%20-%20HU-ISIMS-RIS_files/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="Log%20in%20-%20HU-ISIMS-RIS_files/css.css" rel="stylesheet">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="http://isimsregistrar.haramaya.edu.et/AdminLTE/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://isimsregistrar.haramaya.edu.et/AdminLTE/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://isimsregistrar.haramaya.edu.et/AdminLTE/favicon-16x16.png">
+    <link rel="manifest" href="http://isimsregistrar.haramaya.edu.et/AdminLTE/site.webmanifest">
+
+    <style>
+        body {
+            background-color: #f0f2f5; /* Light background for contrast */
+            font-family: 'Source Sans Pro', sans-serif; /* Consistent font */
+            zoom: 1; /* Adjust zoom for better visibility */
+        }
+
+        .login-container {
+            height: 100vh; /* Full height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            width: 400px; /* Fixed width */
+            padding: 2rem; /* Padding for inner spacing */
+            border-radius: 10px; /* Rounded corners */
+            background: white; /* White background */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            transition: transform 0.3s ease; /* Animation on hover */
+        }
+
+            .login-box:hover {
+                transform: scale(1.02); /* Slight zoom effect on hover */
+            }
+
+        .form-floating input {
+            border-radius: 30px; /* Rounded input fields */
+        }
+
+        .btn-custom {
+            background-color: #007bff; /* Bootstrap primary color */
+            border: none;
+            color: white;
+            border-radius: 30px; /* Rounded button */
+            padding: 10px 20px; /* Padding for the button */
+            transition: background-color 0.3s ease, transform 0.2s ease; /* Button transition */
+        }
+
+            .btn-custom:hover {
+                background-color: #0056b3; /* Darker shade on hover */
+                transform: translateY(-2px); /* Lift button on hover */
+            }
+
+        .footer-text {
+            text-align: center; /* Centered footer text */
+            margin-top: 20px; /* Space above */
+            color: #6c757d; /* Footer text color */
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center; /* Center icons */
+            margin-top: 15px; /* Space above icons */
+        }
+
+            .social-icons a {
+                margin: 0 10px; /* Space between icons */
+                color: #007bff; /* Icon color */
+                font-size: 1.5rem; /* Icon size */
+                transition: color 0.3s ease; /* Transition for hover effect */
+            }
+
+                .social-icons a:hover {
+                    color: #0056b3; /* Darker shade on hover */
+                }
+
+        .main-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50px; /* Fixed height */
+            background-color: #343a40; /* Dark background */
+            color: #ffffff; /* White text */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+            z-index: 1000;
+        }
+
+        .footer-content a {
+            color: #17a2b8; /* Interactive link color */
+            text-decoration: none;
+        }
+
+            .footer-content a:hover {
+                text-decoration: underline;
+                color: #0dcaf0; /* Lighter hover color */
+            }
+    </style>
+</head>
+
+<body class="layout-top-nav" style="height: auto;">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand-lg navbar-dark bg-gradient-success shadow-lg">
+            <div class="container d-flex align-items-center justify-content-between">
+                <!-- Logo/Title Section -->
+                <a class="navbar-brand font-weight-bold text-light text-uppercase" href="http://isimsregistrar.haramaya.edu.et/">
+                    Haramaya University <br>
+                    <span style="font-size: 0.9rem; font-weight: 400;">Office of the Registrar</span>
+                </a>
+
+                <!-- Navbar Collapse -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Email Section -->
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-bold text-light d-flex align-items-center" href="mailto:iSIMSAlerts@haramaya.edu.et">
+                                <i class="fas fa-envelope mr-2"></i> Email ISIMS Alert
+                            </a>
+                        </li>
+                        <!-- Additional Links (Optional) -->
+                        <li class="nav-item">
+                            <a class="nav-link font-weight-bold text-light d-flex align-items-center" href="https://chat.whatsapp.com/CQ9H8hwKzEBIy2LmLH60Ye" target="_blank" rel="noopener noreferrer">
+                                <i class="fas fa-info-circle mr-2"></i> Public Help Center
+                            </a>
+                        </li>
+
+
+                        
+
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" style="min-height: 608px;">
+            <div class="content">
+                <div class="container">
+                    <div class="login-container">
+                       
+                            
+
+<style>
+
+    form {
+        background: url('~/HU.png');
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: auto;
+    }
+
+    .card-success {
+        background: linear-gradient(135deg, #e9f8e9, #d4edda); /* Soft green gradient */
+        border: 2px solid #28a745; /* Green border */
+    }
+
+    .card-outline {
+        border-radius: 10px; /* Rounded edges */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
+    }
+
+        .card-outline:hover {
+            transform: scale(1.03); /* Slight zoom effect */
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+        }
+
+    .card-title {
+        color: #155724; /* Dark green for the title */
+        font-weight: bold; /* Highlight the title */
+    }
+
+    .card-text {
+        color: #155724; /* Match text with title */
+    }
+
+    .btn-custom {
+        background-color: #28a745; /* Green button */
+        border: none;
+        color: #fff;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .btn-custom:hover {
+            background-color: #218838; /* Darker green on hover */
+            transform: translateY(-2px); /* Lift button on hover */
+        }
+</style>
+
+<style>
+    .error-box {
+        display: none; /* Initially hidden */
+        padding: 15px;
+        border-radius: 10px;
+        background-color: #ffdddd;
+        color: #721c24;
+        border-left: 5px solid #dc3545; /* Red left border */
+        font-weight: bold;
+        position: relative;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+        .error-box strong {
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+        }
+
+        .error-box i {
+            margin-right: 8px;
+        }
+
+        .error-box ul {
+            margin: 10px 0 0;
+            padding-left: 20px;
+        }
+
+    .close-btn {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        border: none;
+        background: transparent;
+        font-size: 20px;
+        cursor: pointer;
+        color: #721c24;
+    }
+
+        .close-btn:hover {
+            color: #ff0000;
+        }
+
+    /* Button */
+    .btn-login {
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #28a745, #1c7c32);
+        color: white;
+        font-size: 18px;
+        font-weight: 600;
+        border: none;
+        transition: 0.3s;
+    }
+
+    /* Header Logo */
+    .login-logo img {
+        width: 110px;
+        height: 110px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #28a745;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    }
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var errorBox = document.querySelector(".error-box");
+        if (errorBox && errorBox.innerText.trim().length > 0) {
+            errorBox.style.display = "block"; // Show error box if messages exist
+
+            // Auto-hide after 5 seconds
+            setTimeout(function () {
+                errorBox.style.display = "none";
+            }, 10000);
+        }
+    });
+
+    function closeErrorBox() {
+        document.querySelector(".error-box").style.display = "none";
+    }
+</script>
+
+<div class="card card-success card-outline" style="width: 400px; margin: 0 auto;">
+
+    <div class="card-body login-card-body" style="border-radius: 50px; width: 100%; max-width: 800px; margin: 0 auto;">
+        <!-- Card content here -->
+
+        <div class="text-center mb-3 login-logo">
+            <img src="Log%20in%20-%20HU-ISIMS-RIS_files/HU.png" alt="Logo of HU" style="width: 100px; height: 100px; border-radius: 50%;">
+        </div>
+        <p class="login-box-msg">
+            <strong style="text-align:center">
+                <a href="#">LOGIN TO SECURE ACCESS</a>
+            </strong>
+
+        </p>
+
+
+        <form id="account" method="post" novalidate="novalidate">
+
+            
+
+            <div class="form-floating mb-3">
+                <label for="floatingInput">Username</label>
+                <input class="form-control" id="floatingInput" placeholder="Username" autocomplete="username" aria-required="true" type="email" data-val="true" data-val-email="The Email field is not a valid e-mail address." data-val-required="The Email field is required." name="Input.Email">
+                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Email" data-valmsg-replace="true"></span>
+            </div>
+
+            <div class="form-floating mb-3">
+                <label for="floatingPassword">Password</label>
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password" autocomplete="current-password" aria-required="true" data-val="true" data-val-required="The Password field is required." name="Input.Password">
+                <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
+            </div>
+
+            <button id="login-submit" type="submit" class="btn btn-success btn-lg w-100">Login</button>
+
+
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8CL8rWttYBdJqtPHv-_pzJjsWf-eepgpUPZGB0yk3O_fgr_iNsMuT2UlOoN5qf_GJ_VK6GLc0oIF0DTsEDuKwu7f0_unIViQJykoNv-OJz48sBLqr0UHshR190HEOHZI595J_R5LqYS6EvipBqPh4H0"></form>
+    </div>
+
+
+
+    <div class="card-footer text-center">
+    </div>
+</div>
+
+
+
+                        
+                    </div>
+                </div><!-- /.container-fluid -->
+            </div>
+            <!-- /.content -->
+        </div>
+
+        <footer class="main-footer text-center">
+            <div class="footer-content">
+                <strong>Copyright © <span id="current-year">2026</span> <a href="https://www.haramaya.edu.et/" target="_blank">Haramaya University</a>.</strong>
+                All rights reserved.
+            </div>
+        </footer>
+
+        <script>
+            // Set current year dynamically
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+        </script>
+    </div>
+    <!-- ./wrapper -->
+    <!-- REQUIRED SCRIPTS -->
+    <!-- jQuery -->
+    <script src="Log%20in%20-%20HU-ISIMS-RIS_files/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="Log%20in%20-%20HU-ISIMS-RIS_files/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="Log%20in%20-%20HU-ISIMS-RIS_files/adminlte.min.js"></script>
+
+    
+    
+
+    <script src="Log%20in%20-%20HU-ISIMS-RIS_files/jquery.validate.min.js" crossorigin="anonymous" integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp">
+    </script>
+<script>(window.jQuery && window.jQuery.validator||document.write("\u003Cscript src=\u0022/Identity/lib/jquery-validation/dist/jquery.validate.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o\u002Bok\u002Bt/SAKlL5mvXLr0OXNi1Hp\u0022\u003E\u003C/script\u003E"));</script>
+    <script src="Log%20in%20-%20HU-ISIMS-RIS_files/jquery.validate.unobtrusive.min.js" crossorigin="anonymous" integrity="sha384-R3vNCHsZ+A2Lo3d5A6XNP7fdQkeswQWTIPfiYwSpEP3YV079R+93YzTeZRah7f/F">
+    </script>
+<script>(window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive||document.write("\u003Cscript src=\u0022/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-R3vNCHsZ\u002BA2Lo3d5A6XNP7fdQkeswQWTIPfiYwSpEP3YV079R\u002B93YzTeZRah7f/F\u0022\u003E\u003C/script\u003E"));</script>
+
+
+
+
+</body></html>

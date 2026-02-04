@@ -10,8 +10,8 @@ st.set_page_config(
     layout="wide"
 )
 
-# API base URL - use environment variable for production
-API_BASE = os.getenv("BACKEND_URL", "http://localhost:8000")
+# API base URL - use environment variable or fallback to local backend
+API_BASE = os.getenv("BACKEND_URL", "http://127.0.0.1:8000")
 
 st.title("🔍 magarsa  Research Assistant")
 st.markdown("Upload documents and ask questions about them")

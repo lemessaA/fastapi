@@ -5,7 +5,7 @@ DOCS_DIR = "sample_data"
 
 # Initialize embeddings
 embeddings = HuggingFaceEmbeddings(
-    model_name="sentence-transformers/all-MiniLM-L6-v2"
+    model_name="avsolatorio/GIST-all-MiniLM-L6-v2"
 )
 
 # Initialize ChromaDB
