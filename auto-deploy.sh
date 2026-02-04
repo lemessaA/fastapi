@@ -22,7 +22,7 @@ BACKEND_RESPONSE=$(curl -s -X POST "https://api.render.com/v1/services" \
     "branch": "main",
     "runtime": "python",
     "buildCommand": "pip install -r requirements.txt",
-    "startCommand": "uvicorn main:app --host 0.0.0.0 --port $PORT",
+    "startCommand": "python -m uvicorn main:app --host 0.0.0.0 --port $PORT",
     "envVars": [
       {
         "key": "PORT",

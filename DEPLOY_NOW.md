@@ -7,7 +7,7 @@ Then configure:
 - **Name**: `rag-backend`
 - **Runtime**: `Python 3`
 - **Build Command**: `pip install -r requirements.txt`
-- **Start Command**: `uvicorn main:app --host 0.0.0.0 --port $PORT`
+- **Start Command**: `python -m uvicorn main:app --host 0.0.0.0 --port $PORT`
 - **Instance Type**: `Free`
 - **Environment Variables**:
   - `GROQ_API_KEY`: Your Groq API key
