@@ -18,7 +18,7 @@ def start_fastapi_backend():
     from main import app
     
     # Run FastAPI on port 8000 (internal)
-    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="info")
+    uvicorn.run(app, host="127.0.0.1", port=8000, log_level="warning")  # Reduce log level
 
 def start_streamlit_frontend():
     """Start Streamlit frontend"""
@@ -42,17 +42,23 @@ def start_streamlit_frontend():
 
 def wait_for_backend():
     """Wait for backend to be ready"""
-    max_wait = 30
+    max_wait = 60  # Increase wait time
     for i in range(max_wait):
         try:
-            response = requests.get("http://127.0.0.1:8000/health", timeout=1)
+            response = requests.get("http://127.0.0.1:8000/health", timeout=2)
             if response.status_code == 200:
                 print("✅ Backend is ready!")
                 return True
-        except:
+        except requests.exceptions.RequestException as e:
+            # Backend still starting up
             pass
+        except Exception as e:
+            # Other errors, but keep trying
+            pass
+        
         time.sleep(1)
-        print(f"⏳ Waiting for backend... ({i+1}/{max_wait})")
+        if i % 10 == 0:  # Print every 10 seconds
+            print(f"⏳ Waiting for backend... ({i+1}/{max_wait})")
     
     print("❌ Backend failed to start")
     return False

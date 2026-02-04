@@ -161,7 +161,13 @@ def safe_load_document(filepath):
         elif file_extension in ['.docx', '.doc']:
             return Docx2txtLoader(filepath).load()
         elif file_extension in ['.xlsx', '.xls']:
-            return UnstructuredExcelLoader(filepath).load()
+            try:
+                return UnstructuredExcelLoader(filepath).load()
+            except ImportError as e:
+                if 'msoffcrypto' in str(e):
+                    raise Exception(f"Excel file support requires additional dependencies. Please install: pip install msoffcrypto-tool xlrd")
+                else:
+                    raise e
         elif file_extension in ['.pptx', '.ppt']:
             return UnstructuredPowerPointLoader(filepath).load()
         elif file_extension in ['.html', '.htm']:
