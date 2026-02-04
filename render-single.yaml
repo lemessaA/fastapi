@@ -2,9 +2,9 @@ services:
   # Unified RAG Application (Frontend + Backend)
   - type: web
     name: rag-app
-    runtime: python
+    runtime: python3
     plan: free
-    buildCommand: "pip install -r requirements.txt"
+    buildCommand: "uv pip install -r requirements.txt"
     startCommand: "python app.py"
     envVars:
       - key: PORT
